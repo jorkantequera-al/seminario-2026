@@ -1,40 +1,42 @@
-<ion-header [translucent]="true">
+<ion-header>
   <ion-toolbar>
-    <ion-title>holassss</ion-title>
+    <ion-title>
+      helo
+    </ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+  <ion-button shape="round" (click)="goBack()">Ir al intro</ion-button>
+
+<ion-content [style.--background]="colorActual">
   <swiper-container
-    pagination="true"
-    loop="true"
-    slides-per-view="1"
+  pagination='true'
+  loop='true'
   >
-    <swiper-slide *ngFor="let genre of genres">
-      <div class="slide-content">
-        <h2>{{ genre.title }}</h2>
-        <img [src]="genre.Image" [alt]="genre.title">
-        <p>{{ genre.description }}</p>
-      </div>
-    </swiper-slide>
-  </swiper-container>
-  <div [style.background-color]="coloractual">
-    Hola mundo
+  
+  <swiper-slide *ngFor="let genre of genres">
+    <div class="slide-content">
+      <h2>{{ genre.title }}</h2>
+      <img [src]="genre.image" [alt]="genre.title">
+      <p>{{ genre.description }}</p>
+    </div>
+
+  </swiper-slide>
+</swiper-container>
+
+
+<!-- DEMO STORAGE -->
+
+<div>
+  <h3>demo ionic storage pppp </h3>
+  <div [style.background-color]="colorActual">
+    <p>Tema actual: {{ colorActual === coloruno ? 'Azul' : 'Negro'}}</p>
 
   </div>
-  <ion-button {(click)="cambiarcolor()"}>
-    cambia tema
+</div>
 
-  </ion-button>
-  <ion-card>
-  <ion-card-header>
-    <ion-card-title>Card Title</ion-card-title>
-    <ion-card-subtitle>Card Subtitle</ion-card-subtitle>
-  </ion-card-header>
+<div>
+  <ion-button shape="round" (click)="cambiarcolor()">Cambiar Tema y Guardar</ion-button>
+</div>
 
-  <ion-card-content>
-    Here's a small text description for the card content. Nothing more, nothing less.
-  </ion-card-content>
-</ion-card>
 </ion-content>
-
