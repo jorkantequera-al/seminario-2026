@@ -3,7 +3,31 @@
   padding: 10px;
 }
 
+.slide-content img {
+  width: 100%;
+  max-width: 300px;
+  height: auto;
+  border-radius: 10px;
+  margin: 10% 0;
+}
+
 .slide-content h2 {
-  text-align: center;
-  font-size: 15px;
+  margin: 0;
+  font-size: 25px;
+  color: #fbff00;
+}
+
+.slide-content p {
+  font-size: 20px;
+  color: aliceblue;
+  text-align: justify;
+}
+
+.card {
+  padding: var(--espaciado-grande);
+  background-color: var(--color-claro);
+}
+
+.bg-card-test {
+  background: #650f5e;  
 }

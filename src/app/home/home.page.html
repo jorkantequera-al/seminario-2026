@@ -1,42 +1,26 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>
-      helo
-    </ion-title>
-  </ion-toolbar>
-</ion-header>
+  <ion-header>
+    <ion-toolbar>
+      <ion-title> 
+        Home  
+      </ion-title>
+      <ion-buttons slot="end">
+        <ion-menu-button></ion-menu-button>
+      </ion-buttons>
+    </ion-toolbar>
+  </ion-header>
 
-  <ion-button shape="round" (click)="goBack()">Ir al intro</ion-button>
-
-<ion-content [style.--background]="colorActual">
+ <ion-content>
   <swiper-container
-  pagination='true'
-  loop='true'
-  >
-  
-  <swiper-slide *ngFor="let genre of genres">
+pagination="true"
+loop="true"   
+slides-per-view="3"
+>
+<swiper-slide *ngFor="let album of albums">
     <div class="slide-content">
-      <h2>{{ genre.title }}</h2>
-      <img [src]="genre.image" [alt]="genre.title">
-      <p>{{ genre.description }}</p>
+      <img [src]="album.image"/>
+      <p> {{ album.name }} </p>
     </div>
-
   </swiper-slide>
 </swiper-container>
 
-
-<!-- DEMO STORAGE -->
-
-<div>
-  <h3>demo ionic storage pppp </h3>
-  <div [style.background-color]="colorActual">
-    <p>Tema actual: {{ colorActual === coloruno ? 'Azul' : 'Negro'}}</p>
-
-  </div>
-</div>
-
-<div>
-  <ion-button shape="round" (click)="cambiarcolor()">Cambiar Tema y Guardar</ion-button>
-</div>
-
-</ion-content>
+ </ion-content>

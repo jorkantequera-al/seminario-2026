@@ -19,24 +19,24 @@ export class IntroPage implements OnInit {
 
   genres = [
     {
-      title: 'Bienvenidos',
-      image: 'https://img.freepik.com/vector-premium/icono-plantilla-diseno-degradado-logotipo-astronauta-musica_442940-970.jpg?semt=ais_hybrid&w=740&q=80',
-      description: 'A la mejor aplicacion de musica de todos los tiempos.'
+      title: 'WELCOME',
+      image: 'https://png.pngtree.com/element_our/sm/20180415/sm_5ad31d9b53530.jpg',
+      description: 'A LA MEJOR MUSICA PARA EMPEZAR TU DIA.'
     },
     {
       title: '',
-      image: 'https://planetaviola.com/wp-content/uploads/2020/09/maxresdefault_0.jpg',
-      description: 'Crea o guarda con la mejor calidad tus playList para poder escuchar en cualquier momento y en cualquier lugar.'
+      image: 'https://www.freepik.es/vector-premium/musica-naturaleza-es-forma-disfrutar-vida-fresca_31785614.htm',
+      description: 'crea tu musica para tu playlist donde sea'
     },
     {
       title: 'Configua',
       image: 'https://cdn-icons-png.freepik.com/256/889/889744.png?semt=ais_white_label',
-      description: 'Todo a tu medida.'
+      description: 'tu mismo pones limites'
     },
     {
-      title: 'Disfruta',
+      title: 'GOZALA SIU',
       image: '',
-      description: 'Explora todos los géneros disponibles.'
+      description: 'Explora tus ganeros favoritos'
     }
   ];
 
