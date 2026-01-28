@@ -1,33 +1,73 @@
-.slide-content {
-  text-align: center;
-  padding: 10px;
+/* ===== FONDO GENERAL ===== */
+ion-content {
+  --background: linear-gradient(180deg, #0f2027, #203a43, #2c5364);
 }
 
-.slide-content img {
+/* ===== HEADER ===== */
+ion-toolbar {
+  --background: transparent;
+  --color: #ffffff;
+}
+
+ion-title {
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+
+/* ===== CONTENEDOR PRINCIPAL ===== */
+.home-container {
+  padding: 16px;
+}
+
+/* ===== CARD DE GÉNERO ===== */
+.genre-card {
+  background: #ffffff;
+  border-radius: 20px;
+  box-shadow: 0 14px 30px rgba(0, 0, 0, 0.35);
+  margin-bottom: 18px;
+  overflow: hidden;
+  animation: fadeUp 0.5s ease;
+}
+
+/* ===== IMAGEN ===== */
+.genre-image {
   width: 100%;
-  max-width: 300px;
-  height: auto;
-  border-radius: 10px;
-  margin: 10% 0;
+  height: 160px;
+  object-fit: cover;
 }
 
-.slide-content h2 {
-  margin: 0;
-  font-size: 25px;
-  color: #fbff00;
+/* ===== TEXTO ===== */
+.genre-content {
+  padding: 14px 16px;
 }
 
-.slide-content p {
-  font-size: 20px;
-  color: aliceblue;
-  text-align: justify;
+.genre-content h2 {
+  font-size: 18px;
+  font-weight: 700;
+  color: #2c5364;
+  margin-bottom: 6px;
 }
 
-.card {
-  padding: var(--espaciado-grande);
-  background-color: var(--color-claro);
+.genre-content p {
+  font-size: 14px;
+  color: #555;
+  line-height: 1.4;
 }
 
-.bg-card-test {
-  background: #650f5e;  
+/* ===== EFECTO HOVER (DESKTOP) ===== */
+.genre-card:hover {
+  transform: translateY(-4px);
+  transition: transform 0.3s ease;
+}
+
+/* ===== ANIMACIÓN ===== */
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }

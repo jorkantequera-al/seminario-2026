@@ -1,48 +1,106 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>Login</ion-title>
+  <ion-toolbar color="dark">
+    <ion-title>Bienvenido</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
-  <figure class="profile-default-image ion-text-center">
-    <p>Ingresa tus datos</p>
-    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSBoqLSVCj-_fOFFee9xXYQSBDjWYfFX5WB_Q&s">
-  </figure>
-  <form [formGroup]="loginForm" (ngSubmit)="loginUser(loginForm.value)">
-    <ion-item>
-      <ion-input label="Email" labelPlacement="stacked" placeholder="escribe aqui compae" formControlName="email" ></ion-input>
-    </ion-item>
-    <div>  <!-- TAREA  utilirzar para darle estilo a como muestra el mensaje [LISTA] -->  
-      <ng-container *ngFor="let validation of validation_message.email">
-        <div 
-        class="error-message"
-        *ngIf="(loginForm.get('email')?.hasError(validation.type) && loginForm.get('email')?.dirty)"
-        >{{validation.message}}</div>
-      </ng-container>
-    </div> <!-- TAREA  mostrar el mensaje de error en la validacion del campo de password [LISTA] -->
-    <ion-item>
-      <!-- TAREA: cambiar input a paswword [LISTA]-->
-     <ion-input type="password" label="Contraseña" labelPlacement="stacked" placeholder="escribe aqui tu contra" formControlName="password"> </ion-input>
-    </ion-item>
-<div>
-  <ng-container *ngFor="let validation of validation_message.password">
-    <div
-      class="error-message"
-      *ngIf="loginForm.get('password')?.hasError(validation.type) && loginForm.get('password')?.dirty">
-      {{ validation.message }}
-    </div>
-  </ng-container>
-</div>
-  <ion-button expand="full" shape="round" color="success" [disabled]="!loginForm.valid" type="submit">
-      Login
-  </ion-button>
-  <ion-button
-  expand="full"
-  fill="outline"
-  color="primary"
-  (click)="goToRegister()"> Crear cuenta
-</ion-button>
-  </form>
-  {{errorMessage}}
+<ion-content class="login-bg">
+
+  <div class="login-wrapper">
+
+    <!-- Card -->
+    <ion-card class="login-card">
+
+      <ion-card-header class="ion-text-center">
+        <ion-icon name="person-circle-outline" class="login-avatar"></ion-icon>
+        <ion-card-title>Iniciar sesión</ion-card-title>
+        <ion-card-subtitle>Accede a tu cuenta</ion-card-subtitle>
+      </ion-card-header>
+
+      <ion-card-content>
+
+        <form
+          [formGroup]="loginForm"
+          (ngSubmit)="loginUser(loginForm.value)"
+        >
+
+          <!-- EMAIL -->
+          <ion-item>
+            <ion-icon name="mail-outline" slot="start"></ion-icon>
+            <ion-input
+              label="Email"
+              labelPlacement="floating"
+              formControlName="email">
+            </ion-input>
+          </ion-item>
+
+          <div class="error-message">
+            <ng-container *ngFor="let validation of validation_message.email">
+              <div
+                *ngIf="
+                  loginForm.get('email')?.hasError(validation.type) &&
+                  loginForm.get('email')?.dirty
+                ">
+                {{ validation.message }}
+              </div>
+            </ng-container>
+          </div>
+
+          <!-- PASSWORD -->
+          <ion-item>
+            <ion-icon name="lock-closed-outline" slot="start"></ion-icon>
+            <ion-input
+              type="password"
+              label="Contraseña"
+              labelPlacement="floating"
+              formControlName="password">
+            </ion-input>
+          </ion-item>
+
+          <div class="error-message">
+            <ng-container *ngFor="let validation of validation_message.password">
+              <div
+                *ngIf="
+                  loginForm.get('password')?.hasError(validation.type) &&
+                  loginForm.get('password')?.dirty
+                ">
+                {{ validation.message }}
+              </div>
+            </ng-container>
+          </div>
+
+          <!-- Error general -->
+          <div class="global-error ion-text-center" *ngIf="errorMessage">
+            {{ errorMessage }}
+          </div>
+
+          <!-- BOTÓN -->
+          <ion-button
+            expand="block"
+            shape="round"
+            color="primary"
+            type="submit"
+            [disabled]="!loginForm.valid"
+          >
+            Entrar
+          </ion-button>
+
+          <!-- REGISTRO -->
+          <ion-button
+            expand="block"
+            fill="clear"
+            color="medium"
+            (click)="goToRegister()"
+          >
+            Crear cuenta
+          </ion-button>
+
+        </form>
+
+      </ion-card-content>
+
+    </ion-card>
+
+  </div>
+
 </ion-content>

@@ -1,133 +1,117 @@
-<ion-content class="register-content">
-  <div class="register-container">
-    
-    <!-- Header con botón de volver -->
-    <div class="header-section">
-      <ion-button 
-        fill="clear" 
-        (click)="goToLogin()"
-        class="back-button">
-        <ion-icon name="arrow-back" slot="icon-only"></ion-icon>
-      </ion-button>
-      
-      <div class="logo-container">
-        <ion-icon name="person-add" class="logo-icon"></ion-icon>
-        <h1 class="page-title">Crear Cuenta</h1>
-      </div>
-      <p class="subtitle-text">Completa tus datos para registrarte</p>
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Crear cuenta</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <!-- Cabecera visual -->
+  <div class="register-header ion-text-center">
+    <ion-icon name="person-add-outline"></ion-icon>
+    <p>Completa los datos para registrarte</p>
+  </div>
+
+  <!-- Formulario -->
+  <form
+    [formGroup]="registerForm"
+    (ngSubmit)="onRegister()"
+    class="register-form"
+  >
+
+    <!-- NOMBRE -->
+    <ion-item>
+      <ion-icon name="person-outline" slot="start"></ion-icon>
+      <ion-input
+        label="Nombre"
+        labelPlacement="stacked"
+        placeholder="Tu nombre"
+        formControlName="nombre">
+      </ion-input>
+    </ion-item>
+
+    <div class="error-message" *ngIf="hasError('nombre')">
+      {{ getErrorMessage('nombre') }}
     </div>
 
-    <!-- Formulario de Registro -->
-    <form [formGroup]="registerForm" (ngSubmit)="onRegister()" class="register-form">
-      
-      <!-- Campo Nombre -->
-      <div class="input-group">
-        <ion-item 
-          class="custom-input"
-          [class.error-input]="hasError('nombre')">
-          <ion-icon name="person" slot="start" class="input-icon"></ion-icon>
-          <ion-input
-            type="text"
-            placeholder="Nombre"
-            formControlName="nombre"
-            class="form-input">
-          </ion-input>
-        </ion-item>
-        <div class="error-message" *ngIf="hasError('nombre')">
-          {{ getErrorMessage('nombre') }}
-        </div>
-      </div>
+    <!-- APELLIDO -->
+    <ion-item>
+      <ion-icon name="people-outline" slot="start"></ion-icon>
+      <ion-input
+        label="Apellido"
+        labelPlacement="stacked"
+        placeholder="Tu apellido"
+        formControlName="apellido">
+      </ion-input>
+    </ion-item>
 
-      <!-- Campo Apellido -->
-      <div class="input-group">
-        <ion-item 
-          class="custom-input"
-          [class.error-input]="hasError('apellido')">
-          <ion-icon name="person" slot="start" class="input-icon"></ion-icon>
-          <ion-input
-            type="text"
-            placeholder="Apellido"
-            formControlName="apellido"
-            class="form-input">
-          </ion-input>
-        </ion-item>
-        <div class="error-message" *ngIf="hasError('apellido')">
-          {{ getErrorMessage('apellido') }}
-        </div>
-      </div>
-
-      <!-- Campo Email -->
-      <div class="input-group">
-        <ion-item 
-          class="custom-input"
-          [class.error-input]="hasError('email')">
-          <ion-icon name="mail" slot="start" class="input-icon"></ion-icon>
-          <ion-input
-            type="email"
-            placeholder="Email"
-            formControlName="email"
-            class="form-input">
-          </ion-input>
-        </ion-item>
-        <div class="error-message" *ngIf="hasError('email')">
-          {{ getErrorMessage('email') }}
-        </div>
-      </div>
-
-      <!-- Campo Password -->
-      <div class="input-group">
-        <ion-item 
-          class="custom-input"
-          [class.error-input]="hasError('password')">
-          <ion-icon name="lock-closed" slot="start" class="input-icon"></ion-icon>
-          <ion-input
-            [type]="showPassword ? 'text' : 'password'"
-            placeholder="Contraseña"
-            formControlName="password"
-            class="form-input">
-          </ion-input>
-          <ion-button 
-            fill="clear" 
-            slot="end" 
-            (click)="togglePasswordVisibility()"
-            class="password-toggle">
-            <ion-icon 
-              [name]="showPassword ? 'eye-off' : 'eye'"
-              class="toggle-icon">
-            </ion-icon>
-          </ion-button>
-        </ion-item>
-        <div class="error-message" *ngIf="hasError('password')">
-          {{ getErrorMessage('password') }}
-        </div>
-      </div>
-
-      <!-- Botón de Registro -->
-      <ion-button 
-        expand="block" 
-        type="submit"
-        [disabled]="!registerForm.valid"
-        class="register-button">
-        <ion-icon name="person-add" slot="start"></ion-icon>
-        Crear Cuenta
-      </ion-button>
-
-    </form>
-
-    <!-- Divider -->
-    <div class="divider">
-      <span class="divider-text">¿Ya tienes cuenta?</span>
+    <div class="error-message" *ngIf="hasError('apellido')">
+      {{ getErrorMessage('apellido') }}
     </div>
 
-    <!-- Botón de Login -->
-    <ion-button 
-      expand="block" 
-      fill="outline" 
-      (click)="goToLogin()"
-      class="login-button">
-      <ion-icon name="log-in" slot="start"></ion-icon>
-      Iniciar Sesión
+    <!-- EMAIL -->
+    <ion-item>
+      <ion-icon name="mail-outline" slot="start"></ion-icon>
+      <ion-input
+        label="Email"
+        labelPlacement="stacked"
+        placeholder="correo@ejemplo.com"
+        formControlName="email">
+      </ion-input>
+    </ion-item>
+
+    <div class="error-message" *ngIf="hasError('email')">
+      {{ getErrorMessage('email') }}
+    </div>
+
+    <!-- PASSWORD -->
+    <ion-item>
+      <ion-icon name="lock-closed-outline" slot="start"></ion-icon>
+      <ion-input
+        [type]="showPassword ? 'text' : 'password'"
+        label="Contraseña"
+        labelPlacement="stacked"
+        placeholder="Mínimo 6 caracteres"
+        formControlName="password">
+      </ion-input>
+
+      <ion-button
+        fill="clear"
+        slot="end"
+        type="button"
+        (click)="togglePasswordVisibility()"
+      >
+        <ion-icon
+          [name]="showPassword ? 'eye-off-outline' : 'eye-outline'">
+        </ion-icon>
+      </ion-button>
+    </ion-item>
+
+    <div class="error-message" *ngIf="hasError('password')">
+      {{ getErrorMessage('password') }}
+    </div>
+
+    <!-- BOTÓN REGISTRO -->
+    <ion-button
+      expand="full"
+      shape="round"
+      color="success"
+      type="submit"
+      class="register-btn"
+    >
+      Crear cuenta
     </ion-button>
 
-  </div>
+    <!-- VOLVER LOGIN -->
+    <ion-button
+      expand="full"
+      fill="outline"
+      color="primary"
+      (click)="goToLogin()"
+    >
+      Ya tengo cuenta
+    </ion-button>
+
+  </form>
+
 </ion-content>

@@ -1,5 +1,5 @@
 <ion-header>
-  <ion-toolbar color="primary">
+  <ion-toolbar>
     <ion-title>Intro</ion-title>
   </ion-toolbar>
 </ion-header>
@@ -9,23 +9,41 @@
   <swiper-container
     pagination="true"
     slides-per-view="1"
+    effect="fade"
   >
 
-    <swiper-slide *ngFor="let genre of genres; let i = index">
+    <swiper-slide *ngFor="let item of slides; let idx = index">
 
-      <div class="slide-container ion-text-center" [ngClass]="colorActual">
+      <div class="slide-container ion-text-center" [ngClass]="currentColor">
 
-        <img *ngIf="genre.image" [src]="genre.image" />
+        <!-- Imagen principal -->
+        <img
+          *ngIf="item.imageUrl"
+          [src]="item.imageUrl"
+          alt="Intro image"
+        />
 
-        <h2>{{ genre.title }}</h2>
-        <p>{{ genre.description }}</p>
+        <!-- Contenido -->
+        <h2>{{ item.heading }}</h2>
+        <p>{{ item.text }}</p>
 
+        <!-- Indicador visual -->
+        <div class="progress-dots">
+          <span
+            *ngFor="let s of slides; let i = index"
+            [class.active]="i === idx">
+          </span>
+        </div>
+
+        <!-- Botón final -->
         <ion-button
-          *ngIf="i === genres.length - 1"
+          *ngIf="idx === slides.length - 1"
           shape="round"
           expand="block"
-          (click)="goBack()"
-        > Ir al Home
+          size="large"
+          (click)="goHome()"
+        >
+          Comenzar 🎧
         </ion-button>
 
       </div>
