@@ -47,7 +47,9 @@ export class IntroPage implements OnInit {
   }
 
   goHome() {
-  this.storageService.set('introVisto', true);
-  this.router.navigateByUrl('/menu/home');
+
+    this.storageService.set('introVisto', true);
+    console.log ("volver")
+    this.router.navigateByUrl('menu/home');
   }
 }

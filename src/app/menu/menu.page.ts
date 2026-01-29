@@ -19,7 +19,8 @@ constructor(private router: Router) { }
   }
 
   goToIntro(){
-    console.log("ir hacia intro")
+    console.log("volver a la Intro");
+    this.router.navigate(['/intro']);
   }
 
   cerrarSesion() {

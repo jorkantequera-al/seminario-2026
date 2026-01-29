@@ -1,73 +1,67 @@
-/* ===== FONDO GENERAL ===== */
 ion-content {
-  --background: linear-gradient(180deg, #0f2027, #203a43, #2c5364);
+  --background: linear-gradient(
+    180deg,
+    #1db954 0%,
+    #121212 28%,
+    #121212 100%
+  );
 }
 
-/* ===== HEADER ===== */
-ion-toolbar {
-  --background: transparent;
-  --color: #ffffff;
+/* Hero compacto */
+.hero {
+  padding: 16px 16px 6px;
+  color: #ffffff;
+
+  h1 {
+    font-size: 22px;
+    font-weight: 800;
+    margin-bottom: 2px;
+  }
+
+  p {
+    font-size: 13px;
+    opacity: 0.9;
+  }
 }
 
-ion-title {
+/* Título sección */
+.section-title {
+  margin: 10px 16px;
+  font-size: 16px;
   font-weight: 700;
-  letter-spacing: 0.5px;
+  color: #ffffff;
 }
 
-/* ===== CONTENEDOR PRINCIPAL ===== */
-.home-container {
-  padding: 16px;
+/* Swiper */
+swiper-container {
+  padding-left: 16px;
+  padding-bottom: 20px;
 }
 
-/* ===== CARD DE GÉNERO ===== */
-.genre-card {
-  background: #ffffff;
-  border-radius: 20px;
-  box-shadow: 0 14px 30px rgba(0, 0, 0, 0.35);
-  margin-bottom: 18px;
-  overflow: hidden;
-  animation: fadeUp 0.5s ease;
+/* Card compacta */
+.spotify-card {
+  width: 150px;
+  background: #181818;
+  border-radius: 14px;
+  padding: 10px;
 }
 
-/* ===== IMAGEN ===== */
-.genre-image {
+.spotify-card img {
   width: 100%;
-  height: 160px;
+  height: 140px;
   object-fit: cover;
+  border-radius: 10px;
 }
 
-/* ===== TEXTO ===== */
-.genre-content {
-  padding: 14px 16px;
-}
-
-.genre-content h2 {
-  font-size: 18px;
+.spotify-card h3 {
+  margin-top: 6px;
+  font-size: 13px;
   font-weight: 700;
-  color: #2c5364;
-  margin-bottom: 6px;
+  color: #ffffff;
 }
 
-.genre-content p {
-  font-size: 14px;
-  color: #555;
-  line-height: 1.4;
-}
-
-/* ===== EFECTO HOVER (DESKTOP) ===== */
-.genre-card:hover {
-  transform: translateY(-4px);
-  transition: transform 0.3s ease;
-}
-
-/* ===== ANIMACIÓN ===== */
-@keyframes fadeUp {
-  from {
-    opacity: 0;
-    transform: translateY(12px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+.spotify-card p {
+  margin-top: 2px;
+  font-size: 11px;
+  color: #b3b3b3;
 }

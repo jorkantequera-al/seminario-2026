@@ -1,26 +1,37 @@
-  <ion-header>
-    <ion-toolbar>
-      <ion-title> 
-        Home  
-      </ion-title>
-      <ion-buttons slot="end">
-        <ion-menu-button></ion-menu-button>
-      </ion-buttons>
-    </ion-toolbar>
-  </ion-header>
+<ion-header>
+  <ion-toolbar>
+    <ion-title>🎧 MusicApp</ion-title>
 
- <ion-content>
+    <ion-buttons slot="end">
+      <ion-button fill="clear">
+        <ion-icon name="search-outline"></ion-icon>
+      </ion-button>
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <!-- Hero / bienvenida -->
+  <div class="hero">
+    <p>Tu música, a tu ritmo 🎧</p>
+  </div>
+
+  <!-- Sección playlists -->
+  <h2 class="section-title">Hecho para ti</h2>
+
   <swiper-container
-pagination="true"
-loop="true"   
-slides-per-view="3"
->
-<swiper-slide *ngFor="let album of albums">
-    <div class="slide-content">
-      <img [src]="album.image"/>
-      <p> {{ album.name }} </p>
-    </div>
-  </swiper-slide>
-</swiper-container>
+    slides-per-view="3"
+    space-between="5"
+  >
+    <swiper-slide *ngFor="let genre of genres">
+      <div class="spotify-card">
+        <img [src]="genre.image" />
+        <h3>{{ genre.title }}</h3>
+        <p>{{ genre.description }}</p>
+      </div>
+    </swiper-slide>
+  </swiper-container>
 
- </ion-content>
+</ion-content>
