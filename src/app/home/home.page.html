@@ -23,13 +23,12 @@
 
   <swiper-container
     slides-per-view="3"
-    space-between="5"
+    space-between="2"
   >
-    <swiper-slide *ngFor="let genre of genres">
+    <swiper-slide *ngFor="let album of albums">
       <div class="spotify-card">
-        <img [src]="genre.image" />
-        <h3>{{ genre.title }}</h3>
-        <p>{{ genre.description }}</p>
+        <img [src]="album.image"/>
+        <p> {{ album.name }} </p>
       </div>
     </swiper-slide>
   </swiper-container>

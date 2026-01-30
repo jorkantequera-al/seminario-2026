@@ -111,7 +111,7 @@ async simularCargaDatos() {
 obtenerDatoSimulados(){
   return new Promise((resolve) => {
     setTimeout(() => {
-      resolve (['Rock', 'Vallenato', 'Trap'])
+      resolve (['Rock', 'jazz', 'Trap'])
     }, 1500)
   })
 }

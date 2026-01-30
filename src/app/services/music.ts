@@ -5,7 +5,7 @@ import { Injectable } from '@angular/core';
 })
 export class MusicService {
 
-  urlServer= "https://music.fly.dev";
+  urlServer= "";
   constructor() { }
 
   getTracks() {
