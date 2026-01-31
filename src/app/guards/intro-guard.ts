@@ -1,18 +1,26 @@
-import { inject } from '@angular/core';
-import { CanActivateFn, Router } from '@angular/router';
+import { Injectable } from '@angular/core';
+import { CanActivate, Router } from '@angular/router';
 import { StorageService } from '../services/storage';
 
-export const IntroGuard: CanActivateFn = async () => {
-  const storage = inject(StorageService);
-  const router = inject(Router);
+@Injectable({
+  providedIn: 'root'
+})
+export class IntroGuard implements CanActivate {
 
-  const introVisto = await storage.get('introVisto');
+  constructor(
+    private storageService: StorageService,
+    private router: Router
+  ) {}
 
-  if (introVisto) {
-    return true; // deja entrar a Home
+  async canActivate(): Promise<boolean> {
+
+    const introVista = await this.storageService.get('intro');
+
+    if (introVista === true) {
+      return true; 
+    }
+
+    this.router.navigateByUrl('menu/intro'); 
+    return false;
   }
-
-  //  bloquea y redirige a Intro
-  router.navigate(['/']);
-  return false;
-};
+}
