@@ -4,6 +4,8 @@ import { FormsModule, ReactiveFormsModule, FormBuilder, FormGroup, Validators, F
 import { IonicModule, NavController } from '@ionic/angular';
 import { AuthService } from '../services/auth'
 import { Router } from '@angular/router';
+import { StorageService } from '../services/storage';
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.page.html',
@@ -12,15 +14,13 @@ import { Router } from '@angular/router';
   imports: [CommonModule, FormsModule, IonicModule, ReactiveFormsModule]
 })
 export class LoginPage implements OnInit {
-  // [TAREA] crear un nuevo guard para cuando intente entrar al home validar si estoy logueada si no redireccionar a login [LISTA]
   loginForm: FormGroup;
-
 
   errorMessage: string = "";
 
   // [TAREA] añadir los validation_message para password [LISTA]
 
-  validation_message =  {
+  validation_message = {
     email: [
       {
         type: "required", message: "el email es obligatorio"
@@ -29,20 +29,20 @@ export class LoginPage implements OnInit {
         type: "email", message: "email no es valido"
       }
     ],
-      password: [
-    {
-      type: 'required',
-      message: 'la contraseña es obligatoria'
-    },
-    {
-      type: 'minlength',
-      message: 'la contraseña debe tener mínimo 6 caracteres'
-    }
-  ]
+    password: [
+      {
+        type: 'required',
+        message: 'la contraseña es obligatoria'
+      },
+      {
+        type: 'minlength',
+        message: 'la contraseña debe tener mínimo 6 caracteres'
+      }
+    ]
 
   }
 
-  constructor( private formBluider: FormBuilder, private AuthService: AuthService, private navCtrl: NavController, private router: Router ) { 
+  constructor(private storageService: StorageService, private formBluider: FormBuilder, private AuthService: AuthService, private navCtrl: NavController, private router: Router) {
     this.loginForm = this.formBluider.group({
       email: new FormControl(
         '',
@@ -51,28 +51,28 @@ export class LoginPage implements OnInit {
           Validators.email
         ])
       ),
-        password: new FormControl(
+      password: new FormControl(
         '',
         Validators.compose([
           Validators.required,
           Validators.minLength(6)
         ])
-    )  
+      )
     })
-   }
+  }
 
   ngOnInit() {
   }
 
-  loginUser(credentials: any){
+  loginUser(credentials: any) {
     console.log(credentials)
-    this.AuthService.loginUser(credentials).then(res =>{
+    this.AuthService.loginUser(credentials).then(res => {
       this.errorMessage = "";
-      this.navCtrl.navigateForward("/menu/home") 
+      this.navCtrl.navigateForward("/menu/home")
     }).catch(error => {
       this.errorMessage = error;
     })
-    }
+  }
 
   goToRegister() {
     this.navCtrl.navigateForward('/register');
