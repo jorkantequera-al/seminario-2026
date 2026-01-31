@@ -1,22 +1,22 @@
 import { Routes } from '@angular/router';
 import { IntroGuard } from './guards/intro-guard';
-import { guardHomeGuard } from './guards/guard-home-guard';
+import { GuardLogin } from './guards/guard-home-guard';
 // [TAREA] agregar el guard de login [LISTA]
 export const routes: Routes = [
   {
     path: 'menu',
     loadComponent: () => import('./menu/menu.page').then((m) => m.MenuPage),
-    canActivate: [guardHomeGuard], 
+    canActivate: [GuardLogin], 
     children: [
       {
         path: 'home',
         loadComponent: () => import('./home/home.page').then((m) => m.HomePage),
-        canActivate: [guardHomeGuard, IntroGuard],
+        canActivate: [GuardLogin, IntroGuard],
       },
       {
         path: 'intro',
         loadComponent: () => import('./intro/intro.page').then((m) => m.IntroPage),
-        canActivate: [guardHomeGuard],
+        canActivate: [GuardLogin],
       },
       {
         path: '',
