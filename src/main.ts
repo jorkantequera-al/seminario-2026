@@ -4,6 +4,12 @@ import { IonicRouteStrategy, provideIonicAngular } from '@ionic/angular/standalo
 import { routes } from './app/app.routes';
 import { AppComponent } from './app/app.component';
 import { Storage } from '@ionic/storage-angular'
+import {addIcons} from 'ionicons';
+import { personCircleOutline } from 'ionicons/icons';
+
+addIcons({
+  'person-circle-outline': personCircleOutline,
+});
 
 bootstrapApplication(AppComponent, {
   providers: [
