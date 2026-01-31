@@ -24,9 +24,10 @@
   <swiper-container
     slides-per-view="3"
     space-between="2"
+    [loop]="true"
   >
-    <swiper-slide *ngFor="let album of albums">
-      <div class="spotify-card">
+    <swiper-slide  *ngFor="let album of albums">
+      <div (click)="loadSongsByAlbum(album.id)" class="spotify-card">
         <img [src]="album.image"/>
         <p> {{ album.name }} </p>
       </div>
@@ -34,3 +35,38 @@
   </swiper-container>
 
 </ion-content>
+
+<ion-footer>
+  <ion-grid>
+
+    <ion-row>
+      <ion-col class="ion-text-start">
+        <ion-text color="primary">
+          <p class="ion-no-margin ion-margin-start">{{formatDuration(transcurridoMs) || "0:00"}}</p>
+        </ion-text>
+      </ion-col>
+      <ion-col class="ion-text-end">
+        <ion-text color="primary">
+          <p class="ion-no-margin ion-margin-end">{{getRemainngTime() || "0:00"}}</p>
+        </ion-text>
+      </ion-col>
+    </ion-row>
+
+  </ion-grid>
+  <ion-progress-bar class="ion-no-margin ion-no-padding" [value]="valorProgreso"></ion-progress-bar>
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <p class="ion-no-margin">{{ mucicaSelecionada.name || "Escucha una canción"}}</p>
+      </ion-col>
+      <ion-col class="ion-text-start">
+        <ion-icon *ngIf="!favorites" style="font-size: 1.5em; color: rgb(176, 177, 166);" (click)="postFavorite(mucicaSelecionada.id)" name="heart"></ion-icon>
+        <ion-icon *ngIf="favorites" style="font-size: 1.5em; color: rgb(209, 11, 11);" (click)="deleteFavorite(mucicaSelecionada.id)" name="heart"></ion-icon>
+      </ion-col>
+      <ion-col class="ion-text-end">
+        <ion-icon *ngIf="!mucicaSelecionada.playing" name="play" (click)="play()"></ion-icon>
+        <ion-icon *ngIf="mucicaSelecionada.playing" name="pause-outline" (click)="pause()"></ion-icon>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-footer>

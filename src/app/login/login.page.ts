@@ -62,13 +62,16 @@ export class LoginPage implements OnInit {
   }
 
   ngOnInit() {
+    this.storageService.remove('id');
+    this.storageService.set('login', false);
+    this.storageService.remove('introVisto');
   }
 
   loginUser(credentials: any) {
     console.log(credentials)
     this.AuthService.loginUser(credentials).then(res => {
       this.errorMessage = "";
-      this.navCtrl.navigateForward("/menu/home")
+      this.navCtrl.navigateForward("menu/home")
     }).catch(error => {
       this.errorMessage = error;
     })

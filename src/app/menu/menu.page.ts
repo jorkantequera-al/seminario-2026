@@ -3,6 +3,8 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
+import { NavController } from '@ionic/angular';
+import { StorageService } from '../services/storage';
 
 @Component({
   selector: 'app-menu',
@@ -13,19 +15,22 @@ import { IonicModule } from '@ionic/angular';
 })
 export class MenuPage implements OnInit {
 
-constructor(private router: Router) { }
+constructor(private router: Router, private navCtrl:NavController, private storageService: StorageService) { }
 
   ngOnInit() {
   }
 
   goToIntro(){
     console.log("volver a la Intro");
-    this.router.navigate(['/intro']);
+    this.router.navigate(['menu/intro']);
   }
 
   cerrarSesion() {
     
     console.log("Cerrando sesión...");
-    this.router.navigate(['/login']); 
+    this.storageService.remove('introVisto');
+    this.storageService.set('login', false);
+    this.storageService.remove('id');
+    this.navCtrl.navigateForward('login'); 
   }
 }

@@ -16,7 +16,7 @@ export class AppComponent implements OnInit{
   constructor(private storageService: StorageService, private authService: AuthService) {}
 
   ngOnInit(): void {
-    this.authService.initializeMockData();
+    this.authService.initializeData();
     this.storageService.remove('id');
     this.storageService.set('login', false);
   }

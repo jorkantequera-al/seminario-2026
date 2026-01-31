@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { IonicModule } from '@ionic/angular';
 import { Router } from '@angular/router';
 import { StorageService } from '../services/storage';
+import { AuthService } from '../services/auth';
 
 @Component({
   selector: 'app-intro',
@@ -36,7 +37,8 @@ export class IntroPage implements OnInit {
 
   constructor(
     private storageService: StorageService,
-    private router: Router
+    private router: Router,
+    private authService: AuthService
   ) {}
 
   async ngOnInit() {
@@ -46,10 +48,11 @@ export class IntroPage implements OnInit {
     }
   }
 
-  goHome() {
+  async goHome() {
 
     this.storageService.set('introVisto', true);
-    console.log ("volver")
+    this.authService.setUserIntro(await this.storageService.get('id'));
+    console.log ("volver");
     this.router.navigateByUrl('menu/home');
   }
 }
